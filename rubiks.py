@@ -5,23 +5,23 @@ class Rubiks:
     def __init__(self, images):
         self.images = images
     
-    lower_white = [[0,0,100]]
-    upper_white = [[180,150,255]]
+    lower_white = ((0,0,100))
+    upper_white = ((180,150,255))
         
-    lower_green = [[60, 60, 60]]	
-    upper_green = [[70, 255, 255]]	
+    lower_green = ((60, 60, 60))	
+    upper_green = ((70, 255, 255))	
 
-    lower_orange = [[5, 170, 210]]
-    upper_orange = [[10, 225, 255]]
+    lower_orange = ((5, 170, 210))
+    upper_orange = ((10, 225, 255))
 
-    lower_red = [[0, 170, 130], [175, 170, 130]]	
-    upper_red = [[5, 240, 180], [180, 240, 180]]
+    lower_red = ((0, 170, 130), (175, 170, 130))	
+    upper_red = ((5, 240, 180), (180, 240, 180))
 
-    lower_blue = [[80,180,190]]
-    upper_blue = [[120,255,255]]
+    lower_blue = ((80,180,190))
+    upper_blue = ((120,255,255))
 	
-    lower_yellow = [[30, 200, 200]]
-    upper_yellow = [[50, 255, 255]]
+    lower_yellow = ((30, 200, 200))
+    upper_yellow = ((50, 255, 255))
 
     dimensions = (300, 300)
 
