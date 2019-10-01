@@ -30,7 +30,7 @@ class Rubiks:
     @classmethod
     def _show(cls, im):
         cv2.imshow('', im)
-        cv2.waitKey(100) # milliseconds
+        cv2.waitKey(0) # milliseconds
         cv2.destroyAllWindows()
 
     @classmethod
