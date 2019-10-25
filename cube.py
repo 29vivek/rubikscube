@@ -17,18 +17,18 @@ lower_white = ((0,0,100),)
 upper_white = ((180,150,255),)
 
 lower_green = ((60, 150, 100),)   
-upper_green = ((75, 255, 255),) 
+upper_green = ((80, 255, 255),) 
 
-lower_orange = ((5, 150, 210),)
-upper_orange = ((10, 255, 255),)
+lower_orange = ((5, 120, 150),)
+upper_orange = ((12, 255, 255),)
 
-lower_red = ((0, 130, 100), (175, 130, 100))    
+lower_red = ((0, 100, 80), (175, 100, 80))    
 upper_red = ((5, 255, 200), (180, 255, 200))
 
 lower_blue = ((80,150,100),)
 upper_blue = ((120,255,255),)
 
-lower_yellow = ((20, 200, 170),)
+lower_yellow = ((20, 150, 170),)
 upper_yellow = ((50, 255, 255),)
 
 def show(im, x):
@@ -52,11 +52,11 @@ def facelet_number(x_cen,y_cen):
     return row+column   
 
 def get_color_number(thresh):
-    if thresh==lower_red:
+    if thresh==lower_orange:
         return 0
     if thresh==lower_blue:
         return 1
-    if thresh==lower_orange:
+    if thresh==lower_red:
         return 2
     if thresh==lower_green:
         return 3
@@ -83,7 +83,7 @@ def find(obj):
     for low, high in zip(obj[2], obj[3]):
         mask = cv2.inRange(hsvImage, np.array(low), np.array(high))
         frame_threshed = cv2.bitwise_or(frame_threshed, mask)
-    show(frame_threshed, obj[1])   
+    # show(frame_threshed, obj[1])   
     
     ret, thresh = cv2.threshold(frame_threshed, 127, 255, 0)
     # show(thresh, 6)
@@ -109,7 +109,7 @@ def find(obj):
         num=facelet_number(x_cen,y_cen)
         arr[obj[1]*9+num]=get_color_number(obj[2])
     
-    show(obj[0],7)
+    # show(obj[0],7)
     
 def run_in_parallel(im, face):
     ranges = [[im, face, lower_white, upper_white], 
