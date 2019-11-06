@@ -1,10 +1,11 @@
-import cv2
+﻿import cv2
 import numpy as np
 from multiprocessing import Pool
 import time
 import os
 import multiprocessing
 import multiprocessing.pool
+
 class NoDaemonProcess(multiprocessing.Process):
     @property
     def daemon(self):
@@ -49,7 +50,7 @@ upper_yellow = ((50, 255, 255),)
 
 def show(im, x):
     cv2.imshow('im{}'.format(x), im)
-    cv2.waitKey(500) # milliseconds
+    cv2.waitKey(0) # milliseconds
     cv2.destroyAllWindows()
 
 def facelet_number(x_cen,y_cen):
@@ -80,6 +81,20 @@ def get_color_number(thresh):
         return 4
     if thresh==lower_white:
         return 5
+
+def get_char(temp):
+    if temp==0:
+        return 'L'
+    if temp==1:
+        return 'F'
+    if temp==2:
+        return 'R'
+    if temp==3:
+        return 'B'
+    if temp==4:
+        return 'U'
+    if temp==5:
+        return 'D'
 
 def find(obj):
     
@@ -157,20 +172,6 @@ def run_just_linear(im, face):
     color_order = ['white', 'blue', 'orange', 'green', 'red', 'yellow']
     for i, result in enumerate(results):
         cv2.imwrite(file_names[face].split('.')[0]+'_{}.png'.format(color_order[i]), result)
-
-def get_char(temp):
-    if temp==0:
-        return 'L'
-    if temp==1:
-        return 'F'
-    if temp==2:
-        return 'R'
-    if temp==3:
-        return 'B'
-    if temp==4:
-        return 'U'
-    if temp==5:
-        return 'D'
 
 def run_face_parallel(obj):
     # only obj is defined, which is say left.png
